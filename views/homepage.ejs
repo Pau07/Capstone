@@ -32,6 +32,7 @@ main {
     }
     header h1 {
       margin: 0;
+      font-size: large;
     }
     .nav-buttons {
       display: flex;
@@ -97,31 +98,128 @@ main {
       padding: 15px 10px;
       margin-top: auto;
     }
+
+    @media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .nav-buttons {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  form {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  form input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  table {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 6px;
+  }
+
+  button {
+    width: 100%;
+    margin: 10px 0;
+    box-sizing: border-box;
+  }
+
+  canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .container h2 {
+    font-size: 20px;
+  }
+
+  footer p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 24px;
+  }
+
+  .container ul {
+    padding-left: 20px;
+    font-size: 14px;
+  }
+
+  .container p, .container li {
+    font-size: 14px;
+  }
+
+  input[type="file"] {
+    width: 100%;
+  }
+}
+
   </style>
 </head>
 <body>
 
-<header>
-  <h1>SPARK</h1>
+<header id="mainHeader">
+  <h1 id="headerTitle">SPARK</h1>
 </header>
+
 
 <main>
     <div class="container">
   <h2>Student Performance Input</h2>
 
-  <form onsubmit="handleSubmit(event)">
-    <input type="text" id="studentID" placeholder="Student ID" required />
-    <input type="number" id="gpa" step="0.01" placeholder="Previous GPA" required />
-    <input type="number" id="midterm" step="0.1" placeholder="Midterm Grade" required />
-    <input type="number" id="attendance" step="0.1" placeholder="Attendance Rate" required />
-    <input type="number" id="engagement" step="0.1" placeholder="Engagement Score" required />
-    <input type="number" id="atRisk" min="0" max="1" placeholder="At Risk (0 or 1)" required />
-    <button type="submit">Add Student</button>
-    <div style="margin-top: 20px;">
-  <input type="file" accept=".csv" onchange="handleCSVUpload(event)" />
+  
+
+ <form onsubmit="handleSubmit(event)">
+   <div style="margin-bottom: 20px; text-align: left;">
+
+  <p>Please fill in the following details for each student:</p>
+  <ul>
+    <li><strong>Student ID:</strong> Unique identifier for the student (e.g., 2023-00123).</li>
+    <li><strong>Previous GPA:</strong> Student’s Grade Point Average before the current term.</li>
+    <li><strong>Midterm Grade:</strong> Grade received in the midterm exam.</li>
+    <li><strong>Attendance Rate:</strong> Percentage of classes attended (e.g., 92.5).</li>
+    <li><strong>Engagement Score:</strong> Score reflecting class participation or interaction.</li>
+    <li><strong>At Risk (0 or 1):</strong> 1 if student is at academic risk, 0 if not.</li>
+  </ul>
+  <p>You can add one student at a time or upload a CSV file with multiple entries.</p>
 </div>
 
-  </form>
+
+  <input type="text" id="studentID" placeholder="Student ID" required />
+  <input type="number" id="gpa" step="0.01" placeholder="Previous GPA" required />
+  <input type="number" id="midterm" step="0.1" placeholder="Midterm Grade" required />
+  <input type="number" id="attendance" step="0.1" placeholder="Attendance Rate" required />
+  <input type="number" id="engagement" step="0.1" placeholder="Engagement Score" required />
+  <input type="number" id="atRisk" min="0" max="1" placeholder="At Risk (0 or 1)" required />
+  <button type="submit">Add Student</button>
+
+  <div style="margin-top: 20px; text-align: center;">
+    <span style="display: block; margin-bottom: 8px;">&mdash; or upload CSV &mdash;</span>
+    <input type="file" accept=".csv" onchange="handleCSVUpload(event)" />
+  </div>
+</form>
+
 
   
 
@@ -175,7 +273,7 @@ main {
 </main>
 
 <footer>
-  <p>&copy; 2025 SPARK - Student Performance Analytics and Risk Knowledge for Retention Enhancement | Developed with ❤️ for Academic Insights</p>
+  <p>&copy; 2025 SPARK - Student Performance Analytics and Risk Knowledge for Retention Enhancement | Developed by Paulina B. Hurtado</p>
 </footer>
 
 <script>
